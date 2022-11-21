@@ -1,5 +1,4 @@
-{% extends 'blog/base.html' %}
-{% load static %}
+{% extends 'blog/base.html' %} {% load static %}
 <html>
   <head>
     <title>Django Girls blog</title>
@@ -22,16 +21,33 @@
     <div>
       <h1><a href="/">Django Girls Blog</a></h1>
     </div>
-    {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
-{% endblock %}
+    {% block content %} {% for post in posts %}
+    <div class="card text-bg-dark">
+      <img
+        src="{{post.cover.url}}"
+        class="card-img opacity-25"
+        alt="..."
+        style="background-color: rgba(0, 0, 0, 0.7)"
+      />
+      <div class="card-img-overlay">
+        <h5 class="card-title opacity-100">
+          <a
+            class="text-white"
+            href="{% url 'post_detail' pk=post.pk %}"
+            style="text-decoration: none"
+            >{{ post.title }}
+            <span class="material-symbols-outlined">
+              expand_more
+              </span>
+            </a
+          >
+        </h5>
+        <p class="card-text opacity-100">{{post.text}}</p>
+        <p class="card-text opacity-100">
+          <small>{{post.published_date}}</small>
+        </p>
+      </div>
+    </div>
+    {% endfor %} {% endblock %}
   </body>
 </html>

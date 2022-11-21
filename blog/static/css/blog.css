@@ -45,6 +45,10 @@ h1, h2, h3, h4 {
     color: #000000;
 }
 
-.a{
-    padding: 5px 5px 5px 5px;
+.li{
+    text-decoration: none;
+}
+
+.navbar {
+    min-height: 100px;
 }
